@@ -90,8 +90,9 @@ prediction_df = reduce(
 logger_azure = logging.getLogger("azure.core.pipeline.policies.http_logging_policy")
 logger_azure.setLevel(logging.INFO)
 # Send File
-logging.info(f"FILENAME = {os.environ.get('DESTINATION_FILENAME')}_{datetime.now().strftime('%Y-%m-%d')}.csv")
-abc.send_data(
-    buff=prediction_df.to_csv(sep=";", index=False),
-    cloudpath=f"{os.environ.get('DESTINATION_FILENAME')}{datetime.now().strftime('%Y-%m-%d')}.csv",
-)
+logging.info(f"FILENAME = {os.environ.get('DESTINATION_FILENAME')}{datetime.now().strftime('%Y-%m-%d')}.csv")
+if not(abc.is_file(f"{os.environ.get('DESTINATION_FILENAME')}{datetime.now().strftime('%Y-%m-%d')}.csv")):
+    abc.send_data(
+        buff=prediction_df.to_csv(sep=";", index=False),
+        cloudpath=f"{os.environ.get('DESTINATION_FILENAME')}{datetime.now().strftime('%Y-%m-%d')}.csv",
+    )
