@@ -1,7 +1,7 @@
 # Covid19 Prophet Model
 
-# Setup
-## Requirements
+## Setup
+### Requirements
 This project was developed under `Python 3.6.8` and necessitates the following requirements
 ```python
 holidays = "==0.9.11"
@@ -15,7 +15,18 @@ numpy = "*"
 pandas = "==1.0.1"
 ```
 
-## Env Var
+Use `pipenv` to sync the project dependencies
+```bash
+pipenv sync
+```
+> NOTE (NOT RECOMMENDED)
+> 
+> In case you do not use `pipenv` you can use `pip install -r requirements.txt`
+
+
+### Environment Variables
+To run properly, you need to create the following environment variables. You can do so by creating an `.env`
+
 ```bash
 # 
 STORAGE_NAME="<STORAGE_NAME>"
@@ -34,3 +45,6 @@ TRAIN_DATA_POINTS=23 # Numner of data points to use for training
 STEPS_TO_PREDICT=10 # Steps to forecast
 CLIP_TO_ZERO=False # Clip forecasted values to to zeros
 ```
+
+## Run
+To launch the process, you can call `> python main.py` or `> pipenv run python main.py`
