@@ -1,6 +1,20 @@
 # Covid19 Prophet Model
 
 # Setup
+## Requirements
+This project was developed under `Python 3.6.8` and necessitates the following requirements
+```python
+holidays = "==0.9.11"
+fbprophet = "==0.5"
+tqdm = "*"
+python-dotenv = "*"
+azure-storage-blob = "*"
+plotly = "*"
+matplotlib = "*"
+numpy = "*"
+pandas = "==1.0.1"
+```
+
 ## Env Var
 ```bash
 # 
