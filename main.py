@@ -96,3 +96,5 @@ if not(abc.is_file(f"{os.environ.get('DESTINATION_FILENAME')}{datetime.now().str
         buff=prediction_df.to_csv(sep=";", index=False),
         cloudpath=f"{os.environ.get('DESTINATION_FILENAME')}{datetime.now().strftime('%Y-%m-%d')}.csv",
     )
+else:
+    logging.warning(f"FILENAME <{os.environ.get('DESTINATION_FILENAME')}{datetime.now().strftime('%Y-%m-%d')}.csv> already exists in storage")
