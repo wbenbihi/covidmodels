@@ -249,7 +249,7 @@ class AzureBlobConnector(StorageConnector):
         """
         # Upload content to block blob
         with open(filepath, "rb") as data:
-            self._conn.get_blob_client(cloudpath).upload_blob(data, blob_type="BlockBlob")
+            self._conn.get_blob_client(cloudpath).upload_blob(data, blob_type="BlockBlob", overwrite=True)
     
     def send_data(self, buff: str, cloudpath:str):
         """Upload buffer to storage
@@ -259,7 +259,7 @@ class AzureBlobConnector(StorageConnector):
             cloudpath ([type]): Storage location
         """
         # Upload content to block blob
-        self._conn.get_blob_client(cloudpath).upload_blob(buff, blob_type="BlockBlob")
+        self._conn.get_blob_client(cloudpath).upload_blob(buff, blob_type="BlockBlob", overwrite=True)
 
 
 
