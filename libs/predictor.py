@@ -55,11 +55,7 @@ class CovidModel:
         df = self.ts.copy()
         if self.validation_steps and self.train_data_points:
             self.val_df = df.iloc[-self.validation_steps :]
-            self.train_df = df.iloc[
-                -(
-                    self.train_data_points + self.validation_steps
-                ) : -self.validation_steps
-            ]
+            self.train_df = df.iloc[- ( self.train_data_points + self.validation_steps) : -self.validation_steps]
         elif self.train_data_points:
             self.train_df = df.iloc[-self.train_data_points :]
         elif self.validation_steps:
@@ -76,7 +72,7 @@ class CovidModel:
 
     def forecast(self):
         self.future = self.model.make_future_dataframe(
-            periods=len(self.ts) - len(self.train_df) + self.steps_to_predict
+            periods=len(self.val_df) + self.steps_to_predict
         )
         self.pred_df = self.model.predict(self.future)
         return self
