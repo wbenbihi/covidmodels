@@ -9,9 +9,7 @@ from multiprocessing.pool import ThreadPool
 from utils.stdout_silencer import suppress_stdout_stderr
 import plotly.graph_objs as go
 import plotly.offline as py
-from plotly.offline import init_notebook_mode
 
-init_notebook_mode(connected=True)
 import logging
 logger = logging.getLogger("fbprophet")
 logger.setLevel(logging.ERROR)
