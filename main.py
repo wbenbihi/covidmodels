@@ -4,7 +4,7 @@ from datetime import datetime
 from functools import reduce
 from libs.azure_blob_connector import AzureBlobConnector
 from libs.predictor import CovidPredictor
-from utils.func_utils import isevaluatable
+from utils.func_utils import isevaluatable, transform_group
 
 # Load ENV Variables from .env
 from dotenv import load_dotenv
@@ -86,6 +86,9 @@ prediction_df = reduce(
         for p in predictors
     ],
 ).reset_index()
+
+groups = prediction_df.groupby('area')
+prediction_df = groups.apply(lambda group: transform_group(group))
 
 logger_azure = logging.getLogger("azure.core.pipeline.policies.http_logging_policy")
 logger_azure.setLevel(logging.INFO)

@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 ipykernel = "*"
+jupyter = "*"
 
 [packages]
 holidays = "==0.9.11"
